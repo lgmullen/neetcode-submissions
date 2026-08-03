@@ -1,0 +1,24 @@
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        dp = {}
+        def rec(i):
+            if i >= len(s):
+                return True
+            if i in dp:
+                return dp[i]
+
+            res = False
+            for j in range(i, len(s)+1):
+                if s[i:j] in wordDict:
+                    # print(i,j, s[i:j])
+                    if rec(j):
+                        res = True
+            dp[i] = res
+            return res
+        return rec(0)
+
+
+            
+
+       
+            
